@@ -2,18 +2,21 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from 'react-responsive'
 import { Room } from './Room'
+import HeroLights from './HeroLights'
 import React from 'react'
 
 const HeroExperience = () => {
-    const isTablet = useMediaQuery({query: '(max-width: 1024px)'}); // Adjust the breakpoint as needed
-    const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' }); // Adjust the breakpoint as needed
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     return (
-        <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
-            <ambientLight intensity={0.2} color="#1a1a40" />
-            <directionalLight position={[5, 5, 5]} intensity={3} />
+        <Canvas
+            style={{ width: "100%", height: "100%" }}
+            gl={{ antialias: true, alpha: true }}
+            camera={{ position: [0, 0, 15], fov: 45 }}
+        >
 
             <OrbitControls  //movements restrictions
-                enablePan={false} 
+                enablePan={false}
                 enableZoom={!isTablet}
                 maxDistance={20}
                 minDistance={5}
@@ -21,10 +24,15 @@ const HeroExperience = () => {
                 maxPolarAngle={Math.PI / 2}
             />
 
+            <HeroLights />
 
-            <group ></group>
-
-            <Room />
+            <group
+                scale={isMobile ? 0.7 : 1}
+                position={[0, -3.5, 0]}
+                rotation={[0, -Math.PI / 4, 0]}
+            >
+                <Room />
+            </group>
         </Canvas>
     )
 }
