@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Room } from './Room'
 import HeroLights from './HeroLights'
 import React from 'react'
+import Particles from './Particles'
 
 const HeroExperience = () => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' }); // Adjust the breakpoint as needed
@@ -25,6 +26,7 @@ const HeroExperience = () => {
             />
 
             <HeroLights />
+            <Particles /> {/* Add the Particles component here */}
 
             <group
                 scale={isMobile ? 0.7 : 1}
