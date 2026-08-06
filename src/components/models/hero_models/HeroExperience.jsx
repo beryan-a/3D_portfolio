@@ -26,7 +26,7 @@ const HeroExperience = () => {
             />
 
             <HeroLights />
-            <Particles /> {/* Add the Particles component here */}
+            <Particles count={400} /> {/* Add the Particles component here and set count*/}
 
             <group
                 scale={isMobile ? 0.7 : 1}
