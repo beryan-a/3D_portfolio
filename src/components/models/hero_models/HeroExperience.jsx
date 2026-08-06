@@ -4,7 +4,6 @@ import { useMediaQuery } from 'react-responsive'
 import { Room } from './Room'
 import HeroLights from './HeroLights'
 import React from 'react'
-import Particles from './Particles'
 
 const HeroExperience = () => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' }); // Adjust the breakpoint as needed
