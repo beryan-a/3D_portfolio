@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {navLinks} from '../constants/index.js'
 
 const Navbar = () => {
+
+  const [scrolled, setSecrolled] = useState(false);
+
+  useEffect(()=> {
+    const handleScroll=()=>{
+      const isScrolled = window.scrollY > 10;
+      setSecrolled = true;
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return ()=> window.removeEventListener('scroll', handleScroll);
+  }, [])
+
   return (
-    <header className='navbar'>
+    <header className={`navber ${scrolled ? 'scrolled': 'not-scrolled'}`}>
         <div className="inner">
             <a href="#hero" className="logo">
                 Beryan | A
